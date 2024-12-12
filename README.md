@@ -140,6 +140,30 @@ ticket-management-system/
     ```
 - The frontend will start on port 3000. Access the application at `http://localhost:3000`.
 
+## 📝 Environment Configuration
+
+Configure your environment properties in the src/main/resources/application.properties file.
+
+Example Configuration (application.properties)
+
+# Application Name
+spring.application.name=backend
+
+# H2 Database Configuration
+spring.datasource.url=jdbc:h2:mem:setupdb
+spring.datasource.driver-class-name=org.h2.Driver
+spring.datasource.username=arampath
+spring.datasource.password=password
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=update
+spring.h2.console.enabled=true
+
+# CORS Configuration
+spring.web.cors.allowed-origins=http://localhost:3000
+spring.web.cors.allowed-methods=GET,POST,PUT,DELETE,OPTIONS
+spring.web.cors.allow-credentials=true
+
+
 ## 🌐 Key Endpoints
 
 ### System Configuration
