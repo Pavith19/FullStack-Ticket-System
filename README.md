@@ -31,13 +31,13 @@ This project is a full-stack, concurrent Ticket Management System that simulates
 ## 💻 Technology Stack
 
 ### Backend Technologies
-- Java
-- Spring Boot
-- Spring Data JPA
-- Spring WebSocket
-- H2 Database
-- SLF4J (Logback)
-- Maven
+- **Java:** Primary programming language (version 8 or higher)
+- **Spring Boot:** Framework for creating stand-alone, production-grade Spring-based applications
+- **Spring Data JPA:** Simplifies database access and operations
+- **Spring WebSocket:** Enables real-time, bidirectional communication between the server and clients
+- **H2 Database:** An in-memory relational database, ideal for development and testing
+- **SLF4J (with Logback):** Logging framework for recording application events
+- **Maven:** Dependency management and build tool
 
 ### Frontend Technologies
 - React
