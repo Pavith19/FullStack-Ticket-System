@@ -102,11 +102,21 @@ ticket-management-system/
     ```
 
 2. **Backend Setup**
-```bash
-cd backend
-mvn clean install
-mvn spring-boot:run  # Runs on port 8080
-```
+
+   - Navigate to the `backend` directory:
+    ```bash
+    cd backend
+    ```
+   - Build the backend using Maven:
+    ```bash
+    mvn clean install
+    ```
+   - Run the Spring Boot application:
+    ```bash
+    mvn spring-boot:run
+    ```
+
+The backend will start on port 8080.
 
 3. **Frontend Setup**
 ```bash
