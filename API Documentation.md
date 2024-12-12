@@ -3,7 +3,7 @@
 ## 🚀 System Overview
 A robust, feature-rich ticket management API designed for efficient ticket sales and management across multiple events.
 
-## 2.1. 🎛️ Ticket System Control Endpoints
+## 2.1. Ticket System Control Endpoints
 
 ### 2.1.1. 🟢 Start Ticket System
 **Endpoint:** `POST /api/ticket-system-control/start`
@@ -117,3 +117,184 @@ A robust, feature-rich ticket management API designed for efficient ticket sales
 - ⚠️ 500 Internal Server Error
   - **Meaning:** Failed to retrieve ticket information
   - **Example Response:** `"Failed to retrieve current tickets"`
+ 
+ ## 2.3. 💰 Vendor and Customer Interaction Endpoints
+
+### 2.3.1. 🛒 Purchase Tickets
+**Endpoint:** `POST /api/ticket-system/purchase`
+
+**🔍 Detailed Description:**
+- Enables customer ticket purchasing
+- Asynchronous processing
+- Thread-safe transaction handling
+- Real-time inventory management
+
+**📥 Request Parameters:**
+- `customerId` (int): Unique customer identifier
+- `eventName` (string): Target event for ticket purchase
+
+**🛠️ Technical Specifications:**
+- **Request Type:** POST
+- **Concurrency:** Fully thread-safe
+- **Validation:** Strict ticket availability checks
+
+**🔢 Possible Responses:**
+- ✅ 200 OK
+  - **Meaning:** Successful ticket purchase
+  - **Example Response:** `"Customer purchased 2 tickets for Tennis Match"`
+- 🚫 400 Bad Request
+  - **Conditions:** 
+    - Insufficient ticket inventory
+    - Invalid event selection
+  - **Example Response:** `"Not enough tickets available for Tennis Match."`
+- ⚠️ 500 Internal Server Error
+  - **Meaning:** Transaction processing failure
+  - **Example Response:** `"Failed to process ticket purchase: [error details]"`
+
+## 2.4. 🏪 Event and Ticket Management Endpoints
+
+### 2.4.1 ➕ Add Tickets to Pool
+**Endpoint:** `POST /api/ticket-system/vendor/add-tickets`
+
+**🔍 Detailed Description:**
+- Enables vendors to expand ticket inventory
+- Respects system-wide capacity constraints
+- Supports dynamic ticket pool management
+
+**📥 Request Parameters:**
+- `vendorId` (int): Vendor's unique identifier
+- `eventName` (string): Event for ticket allocation
+- `ticketsToAdd` (int): Number of tickets to introduce
+- `price` (double): Individual ticket price
+
+**🛠️ Technical Specifications:**
+- **Request Type:** POST
+- **Capacity Management:** Hard limit enforcement
+- **Pricing Flexibility:** Per-event price setting
+
+**🔢 Possible Responses:**
+- ✅ 200 OK
+  - **Meaning:** Tickets successfully added
+  - **Example Response:** `"Vendor added 5 tickets for Tennis Match"`
+- 🚫 400 Bad Request
+  - **Conditions:** 
+    - Maximum capacity reached
+    - Invalid ticket count
+  - **Example Response:** `"Cannot add more tickets. Total capacity reached."`
+- ⚠️ 500 Internal Server Error
+  - **Meaning:** Ticket addition failure
+  - **Example Response:** `"Failed to add tickets for Tennis Match: [error details]"`
+
+## 2.5. ⚙️ System Configuration Endpoints
+
+### 2.5.1 📋 Get System Configuration
+**Endpoint:** `GET /api/system/config`
+
+**🔍 Detailed Description:**
+- Retrieves comprehensive system settings
+- Provides insights into system operational parameters
+- Supports dynamic configuration monitoring
+
+**🛠️ Technical Specifications:**
+- **Request Type:** GET
+- **Refresh Rate:** Real-time updates
+- **Security:** Restricted access
+
+**🔢 Possible Responses:**
+- ✅ 200 OK
+  - **Meaning:** Configuration successfully retrieved
+  - **Example Response:** 
+    ```json
+    {
+        "totalTickets": 100,
+        "releaseRate": 5,
+        "retrievalRate": 2
+    }
+    ```
+- ⚠️ 500 Internal Server Error
+  - **Meaning:** Configuration retrieval failed
+  - **Example Response:** `"Failed to retrieve system configuration"`
+
+## 2.6. 📚 Transaction Management Endpoints
+
+### 2.6.1. 📖 Get All Transactions
+**Endpoint:** `GET /api/transactions`
+
+**🔍 Detailed Description:**
+- Comprehensive transaction history retrieval
+- Supports financial and sales analysis
+- Provides complete sales tracking
+
+**🛠️ Technical Specifications:**
+- **Request Type:** GET
+- **Data Scope:** Full transaction history
+- **Sorting:** Chronological order
+
+**🔢 Possible Responses:**
+- ✅ 200 OK
+  - **Meaning:** Transactions successfully retrieved
+  - **Example Response:**
+    ```json
+    [
+        {
+            "transactionId": 1,
+            "customerId": 3,
+            "eventName": "Tennis Match",
+            "ticketCount": 2,
+            "totalPrice": 50.00
+        },
+        {
+            "transactionId": 2,
+            "customerId": 5,
+            "eventName": "Pickleball Championship",
+            "ticketCount": 1,
+            "totalPrice": 25.00
+        }
+    ]
+    ```
+- ⚠️ 500 Internal Server Error
+  - **Meaning:** Transaction retrieval failed
+  - **Example Response:** `"Failed to retrieve transactions"`
+
+## 2.7. 🌐 WebSocket Real-Time Updates
+
+### 2.7.1. 🎫 Ticket Updates WebSocket
+**Endpoint:** `ws://localhost:8080/topic/ticket-updates`
+
+**🔍 Detailed Description:**
+- Real-time ticket pool change notifications
+- Instant updates for all connected clients
+- Supports multiple event tracking
+
+**📡 Message Format:**
+```json
+{
+    "action": "add" | "purchase" | "reset",
+    "vendor": 1,     // Vendor ID (add action)
+    "customer": 2,   // Customer ID (purchase action)
+    "tickets": 5,    // Number of tickets
+    "event": "Tennis Match"
+}
+```
+
+### 2.7.2 🚦 System Status Updates WebSocket
+**Endpoint:** `ws://localhost:8080/topic/system-status`
+
+**🔍 Detailed Description:**
+- Provides real-time system state monitoring
+- Instant notifications on system changes
+- Comprehensive status tracking
+
+**📡 Message Format:**
+```json
+{
+    "status": "running" | "stopped" | "reset",
+    "message": "System is running",
+    "ticketsSold": 50,
+    "ticketsAvailable": 50
+}
+```
+
+---
+
+
