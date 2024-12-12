@@ -79,7 +79,7 @@ ticket-management-system/
 ## 🛠️ Setup Instructions
 
 ### Prerequisites
-- Java Development Kit (JDK) 8+
+- Java Development Kit (JDK) 17+
 - Maven 3.2+
 - Node.js 14+ (LTS recommended)
 - npm or yarn
