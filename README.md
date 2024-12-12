@@ -1,44 +1,52 @@
-# 🎫 Concurrent Ticket Management System - Full Stack Application
+# 🎫 Concurrent Ticket Management System
 
-## 🚀 Introduction
+## 🌟 Introduction
 
-This project is a full-stack, concurrent Ticket Management System that simulates a real-world scenario where multiple vendors can add tickets and numerous customers can concurrently purchase them. The system consists of a **Spring Boot backend** that provides RESTful APIs for managing events, tickets, system configurations, and transactions, and a **React frontend** that provides a user-friendly interface to interact with the system.
+A powerful full-stack application simulating a real-world ticket management ecosystem with concurrent ticket addition and purchasing capabilities.
 
-### 🎯 Key Objectives
+### 🚀 Key Objectives
 
-- **Concurrent Ticket Management:** Simulate ticket addition by multiple vendors
-- **Concurrent Ticket Purchasing:** Enable multiple customers to buy tickets simultaneously
-- **Thread Safety:** Ensure data consistency during concurrent operations
-- **Real-time Updates:** Provide live updates about ticket availability using WebSocket
-- **Scalable Solution:** Develop a robust ticket management system with an intuitive user interface
+- **Concurrent Ticket Management**: Simulate simultaneous ticket addition by multiple vendors
+- **Real-time Purchasing**: Enable concurrent ticket purchases by multiple customers
+- **Thread Safety**: Ensure data consistency during concurrent operations
+- **WebSocket Integration**: Provide real-time updates about ticket availability and system status
+- **Scalable Solution**: Offer a robust ticket management system with an intuitive user interface
 
 ## 🏗️ System Architecture
 
-The application follows a client-server architecture:
+### Backend
+- **Technology**: Spring Boot
+- **Core Functions**: 
+  - Business logic processing
+  - Data persistence
+  - Real-time WebSocket communication
 
-- **Backend:** Spring Boot application handling core business logic, data persistence, and real-time WebSocket communication
-- **Frontend:** React application consuming backend APIs, providing system configuration and monitoring interface
-- **Database:** H2 in-memory database for development and testing purposes
+### Frontend
+- **Technology**: React
+- **Core Functions**:
+  - Backend API consumption
+  - User interface for system configuration
+  - Real-time system monitoring and updates
 
 ## 💻 Technology Stack
 
 ### Backend Technologies
-- **Language:** Java (version 8+)
-- **Framework:** Spring Boot
-- **Data Access:** Spring Data JPA
-- **Real-time Communication:** Spring WebSocket
-- **Database:** H2 Database
-- **Logging:** SLF4J (with Logback)
-- **Build Tool:** Maven
+- Java
+- Spring Boot
+- Spring Data JPA
+- Spring WebSocket
+- H2 Database
+- SLF4J (Logback)
+- Maven
 
 ### Frontend Technologies
-- **Library:** React
-- **UI Components:** Material UI (MUI)
-- **HTTP Client:** axios
-- **WebSocket:** SockJS, @stomp/stompjs
-- **Notifications:** react-hot-toast
-- **Runtime Environment:** Node.js
-- **Package Managers:** npm or yarn
+- React
+- Material UI
+- axios
+- SockJS
+- @stomp/stompjs
+- react-hot-toast
+- Node.js
 
 ## 📂 Project Structure
 
@@ -54,61 +62,57 @@ ticket-management-system/
 │           │       ├── model/              # Domain models
 │           │       ├── repository/         # Spring Data JPA repositories
 │           │       ├── service/            # Business logic services
-│           │       └── TicketSystemApplication.java  # Main application class
+│           │       └── TicketSystemApplication.java
 │           └── resources/
-│               └── application.properties  # Application properties
+│               └── application.properties
 └── frontend/                 # React frontend
-    └── public/
-    │   └── index.html          # Main HTML file
+    ├── public/
+    │   └── index.html
     └── src/
-        ├── Components/         # React components
-        ├── systemConfigService.js   # API service for backend communication
-        ├── App.js              # Main React component
-        ├── index.js            # Entry point for React
-        └── webpack.config.js   # Webpack configuration
-    └── package.json            # Frontend dependencies and scripts
+        ├── Components/
+        ├── systemConfigService.js
+        ├── App.js
+        ├── index.js
+        └── webpack.config.js
 ```
 
 ## 🛠️ Setup Instructions
 
 ### Prerequisites
+- Java Development Kit (JDK) 8+
+- Maven 3.2+
+- Node.js 14+ (LTS recommended)
+- npm or yarn
+- Git
 
-- **Java Development Kit (JDK):** Version 8 or higher
-- **Maven:** Version 3.2 or higher
-- **Node.js:** Version 14 or higher (LTS recommended)
-- **npm or yarn**
-- **IDE:** IntelliJ IDEA or Eclipse (Java), VS Code or WebStorm (React)
-- **Git**
-
-### Installation Steps
+### Quick Start
 
 1. **Clone the Repository**
-   ```bash
-   git clone [repository URL]
-   cd [repository directory]
-   ```
+```bash
+git clone [repository URL]
+cd [repository directory]
+```
 
-2. **Build and Run Backend**
-   ```bash
-   cd backend
-   mvn clean install
-   mvn spring-boot:run
-   ```
+2. **Backend Setup**
+```bash
+cd backend
+mvn clean install
+mvn spring-boot:run  # Runs on port 8080
+```
 
-3. **Build and Run Frontend**
-   ```bash
-   cd ../frontend
-   npm install  # or yarn install
-   npm start    # or yarn start
-   ```
+3. **Frontend Setup**
+```bash
+cd ../frontend
+npm install  # or yarn install
+npm start    # Runs on port 3000
+```
 
-## 🔧 System Configuration API
+## 🌐 Key Endpoints
 
-### Configure System
-**Endpoint:** `/api/system-configuration/configure`
-**Method:** `POST`
+### System Configuration
+`POST /api/system-configuration/configure`
 
-**Example Request Body:**
+**Request Body Example:**
 ```json
 {
   "maxCapacity": 1000,
@@ -128,38 +132,121 @@ ticket-management-system/
 }
 ```
 
-## 🌐 WebSocket Communication
+### System Control
+- `POST /api/ticket-system-control/start`
+- `POST /api/ticket-system-control/stop`
+- `POST /api/ticket-system-control/reset`
 
-**WebSocket Endpoint:** `/ws-ticket-system`
+### System Information
+- `GET /api/system-status`
+- `GET /api/ticket-availability`
+
+## 🖥️ Frontend UI Components
+
+### 1. Configuration Form
+- Configure system parameters
+- Add/Remove events
+- Validate input dynamically
+
+### 2. Control Panel
+- Start/Stop/Reset system
+- Display system configuration
+
+### 3. Ticket Display
+- Show total, current, and sold tickets
+- Event-wise ticket breakdown
+
+### 4. Event Board
+- List configured events
+- Event names and prices
+
+### 5. Log Display
+- Real-time system logs
+- Color-coded log levels
+- Log filtering
+
+## 🔌 WebSocket Communication
+
+**Endpoint:** `/ws-ticket-system`
 
 **Topics:**
-- `/topic/system-updates`: System-related updates
-- `/topic/ticket-updates`: Real-time ticket updates
+- `/topic/system-updates`
+- `/topic/ticket-updates`
+
+**Message Format Example:**
+```json
+{
+  "type": "VENDOR_TICKET_ADD",
+  "message": "Vendor 1 added 5 tickets for event Concert A at price $50.00",
+  "details": {
+    "vendorId": 1,
+    "eventName": "Concert A",
+    "ticketsAdded": 5,
+    "price": 50.0,
+    "currentTickets": 100
+  },
+  "timestamp": "2023-11-20T10:00:00"
+}
+```
+
+## 💡 Program Flow
+
+1. **System Startup**
+   - Backend initializes H2 database
+   - Frontend connects via WebSocket
+
+2. **Configuration**
+   - User configures system via frontend
+   - Backend validates and saves configuration
+   - WebSocket broadcasts updates
+
+3. **System Operations**
+   - Simulate vendor ticket additions
+   - Simulate customer ticket purchases
+   - Real-time UI updates via WebSocket
 
 ## 🧪 Testing
 
-- **Backend:** Use Spring's testing framework
-  ```bash
-  mvn test
-  ```
-- **Frontend:** Use Jest and React Testing Library
-  ```bash
-  npm test
-  ```
+### Backend
+```bash
+mvn test
+```
+
+### Frontend
+```bash
+npm test  # or yarn test
+```
+
+## 📊 Sample SQL Queries
+
+### Event Table
+```sql
+INSERT INTO events (event_name, event_price) VALUES (?, ?);
+SELECT * FROM events WHERE event_name = ?;
+```
+
+### Transaction Table
+```sql
+INSERT INTO transactions 
+  (event_name, ticket_price, vendor_id, customer_id, ticket_count, transaction_timestamp) 
+  VALUES (?, ?, ?, ?, ?, ?);
+```
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please:
+Contributions are welcome! 
+
+Steps:
 1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Submit a pull request
+2. Create feature branch
+3. Commit changes
+4. Push to branch
+5. Submit pull request
 
 ## 📄 License
 
-[Specify your license here]
+[Specify your license here, e.g., MIT License]
 
 ## 🙏 Acknowledgments
 
-Thanks to all contributors and the amazing open-source libraries that made this project possible!
+Special thanks to all contributors and open-source libraries that made this project possible!
