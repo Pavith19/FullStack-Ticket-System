@@ -2,7 +2,7 @@
 
 ## 🌟 Introduction
 
-A powerful full-stack application simulating a real-world ticket management ecosystem with concurrent ticket addition and purchasing capabilities.
+This project is a full-stack, concurrent Ticket Management System that simulates a real-world scenario where multiple vendors can add tickets and numerous customers can concurrently purchase them. The system consists of a **Spring Boot backend** that provides RESTful APIs for managing events, tickets, system configurations, and transactions, and a **React frontend** that provides a user-friendly interface to interact with the system.
 
 ### 🚀 Key Objectives
 
