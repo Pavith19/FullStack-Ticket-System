@@ -103,15 +103,15 @@ ticket-management-system/
 
 2. **Backend Setup**
 
-   - Navigate to the `backend` directory:
+- Navigate to the `backend` directory:
     ```bash
     cd backend
     ```
-   - Build the backend using Maven:
+- Build the backend using Maven:
     ```bash
     mvn clean install
     ```
-   - Run the Spring Boot application:
+- Run the Spring Boot application:
     ```bash
     mvn spring-boot:run
     ```
@@ -119,11 +119,24 @@ ticket-management-system/
 The backend will start on port 8080.
 
 3. **Frontend Setup**
-```bash
-cd ../frontend
-npm install  # or yarn install
-npm start    # Runs on port 3000
-```
+
+- Open a new terminal or command prompt
+- Navigate to the `frontend` directory:
+    ```bash
+    cd ../frontend
+    ```
+- Install the frontend dependencies:
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+- Start the React development server:
+    ```bash
+    npm start
+    # or
+    yarn start
+    ```
 
 ## 🌐 Key Endpoints
 
