@@ -116,7 +116,7 @@ ticket-management-system/
     mvn spring-boot:run
     ```
 
-The backend will start on port 8080.
+- The backend will start on port 8080.
 
 3. **Frontend Setup**
 
@@ -137,6 +137,7 @@ The backend will start on port 8080.
     # or
     yarn start
     ```
+- The frontend will start on port 3000. Access the application at `http://localhost:3000`.
 
 ## 🌐 Key Endpoints
 
