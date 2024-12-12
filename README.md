@@ -79,19 +79,27 @@ ticket-management-system/
 ## 🛠️ Setup Instructions
 
 ### Prerequisites
-- Java Development Kit (JDK) 17+
-- Maven 3.2+
-- Node.js 14+ (LTS recommended)
-- npm or yarn
-- Git
+- **Java Development Kit (JDK):** Version 17 or higher. Check with `java -version`
+- **Maven:** Version 3.2 or higher. Verify with `mvn -v`
+- **Node.js:** Version 14 or higher (LTS recommended). Check with `node -v`
+- **npm:** Usually comes with Node.js. Verify with `npm -v`
+- **IDE (Recommended):** 
+  - IntelliJ IDEA or Eclipse for Java
+  - VS Code or WebStorm for React
+- **Git:** For cloning the repository
 
 ### Quick Start
 
 1. **Clone the Repository**
-```bash
-git clone [repository URL]
-cd [repository directory]
-```
+
+- Open your terminal or command prompt
+- Navigate to the directory where you want to clone the project
+- Clone the repository:
+
+    ```bash
+    git clone [repository URL]
+    cd [repository directory]
+    ```
 
 2. **Backend Setup**
 ```bash
@@ -205,17 +213,17 @@ npm start    # Runs on port 3000
    - Simulate customer ticket purchases
    - Real-time UI updates via WebSocket
 
-## 🧪 Testing
 
-### Backend
-```bash
-mvn test
-```
+## 9. 🧪 Testing
 
-### Frontend
-```bash
-npm test  # or yarn test
-```
+### Backend Testing
+- Framework: Spring's testing framework
+- Command: `mvn test`
+
+### Frontend Testing
+- Framework: Jest and React Testing Library
+- Command: `npm test` or `yarn test`
+
 
 ## 📊 Sample SQL Queries
 
@@ -232,21 +240,8 @@ INSERT INTO transactions
   VALUES (?, ?, ?, ?, ?, ?);
 ```
 
-## 🤝 Contributing
-
-Contributions are welcome! 
-
-Steps:
-1. Fork the repository
-2. Create feature branch
-3. Commit changes
-4. Push to branch
-5. Submit pull request
-
 ## 📄 License
 
 [Specify your license here, e.g., MIT License]
 
-## 🙏 Acknowledgments
 
-Special thanks to all contributors and open-source libraries that made this project possible!
