@@ -40,13 +40,14 @@ This project is a full-stack, concurrent Ticket Management System that simulates
 - **Maven:** Dependency management and build tool
 
 ### Frontend Technologies
-- React
-- Material UI
-- axios
-- SockJS
-- @stomp/stompjs
-- react-hot-toast
-- Node.js
+- **React:** JavaScript library for building user interfaces
+- **Material UI (MUI):** React component library for implementing Material Design
+- **axios:** Promise-based HTTP client for making API requests
+- **SockJS:** Browser-side library for WebSocket communication
+- **@stomp/stompjs:** STOMP protocol client for JavaScript
+- **react-hot-toast:** Library for displaying toast notifications
+- **Node.js:** JavaScript runtime environment
+- **npm or yarn:** Package managers for Node.js
 
 ## 📂 Project Structure
 
