@@ -267,6 +267,6 @@ INSERT INTO transactions
 
 ## 📄 License
 
-[Specify your license here, e.g., MIT License]
+[MIT License]
 
 
